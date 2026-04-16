@@ -26,7 +26,9 @@ This repository contains the project code only. Personal job application data is
 
 ## Example Commands
 ```bash
-python apptrack_v2.py add --company "Example Company" --role "Graduate Engineer" --status "Applied" --date_applied "2026-04-16"
+python apptrack_v2.py add
+python apptrack_v2.py add --company "Example Company" --role "Graduate Engineer" --status "Applied" --job_link "https://example.com/job"
 python apptrack_v2.py list
-python apptrack_v2.py update --id 1 --status "Interview"
-python apptrack_v2.py delete --id 1
+python apptrack_v2.py update 1 --status "Interview"
+python apptrack_v2.py update 1 --notes "Invited to first interview"
+python apptrack_v2.py delete 1
