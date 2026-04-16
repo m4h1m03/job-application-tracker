@@ -23,3 +23,10 @@ I built this project to improve my Python, SQL, and database skills while creati
 
 ## Notes
 This repository contains the project code only. Personal job application data is not included.
+
+## Example Commands
+```bash
+python apptrack_v2.py add --company "Example Company" --role "Graduate Engineer" --status "Applied" --date_applied "2026-04-16"
+python apptrack_v2.py list
+python apptrack_v2.py update --id 1 --status "Interview"
+python apptrack_v2.py delete --id 1
