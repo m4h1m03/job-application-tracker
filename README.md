@@ -32,7 +32,3 @@ python apptrack_v2.py list
 python apptrack_v2.py update 1 --status "Interview"
 python apptrack_v2.py update 1 --notes "Invited to first interview"
 python apptrack_v2.py delete 1
-
-
-## Test
-This is a test commit to practice the Git push workflow.
