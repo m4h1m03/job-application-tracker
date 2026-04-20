@@ -1,8 +1,9 @@
 import sqlite3
 import argparse
 from datetime import datetime
+import os
 
-DB_PATH = "/Users/mahimahmed/Desktop/VSCode/Projects/job_applications_v2.sqlite"
+DB_PATH = os.path.join(os.path.dirname(__file__), "job_applications.sqlite")
 
 def get_conn():
     conn = sqlite3.connect(DB_PATH, timeout=5)
