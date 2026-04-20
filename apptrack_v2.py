@@ -188,3 +188,5 @@ if __name__ == "__main__":
             conn.commit()
             print("Deleted")
         conn.close()
+
+        # Testing commit
