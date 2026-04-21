@@ -126,7 +126,7 @@ if __name__ == "__main__":
             print("No applications yet")
         else:
             for i in rows:
-                print(i)
+                print(f'Application ID: {i[0]}, Company Name: {i[1]}, Role: {i[2]}, Application Status: {i[3]}, Date Applied: {i[4]}, Job Link: {i[5] if i[5] is not None else 'Job link not available'}\n')
                 
     # update branch 
 
