@@ -5,7 +5,7 @@ A Python and SQLite command-line project for tracking job applications, statuses
 ## Features
 - Add job applications
 - Store company, role, status, date applied, and job link
-- Update application status
+- Update statistics on application totals and status breakdown
 - Add notes to applications
 - View and manage records from the command line
 
@@ -29,6 +29,7 @@ This repository contains the project code only. Personal job application data is
 python apptrack_v2.py add
 python apptrack_v2.py add --company "Example Company" --role "Graduate Engineer" --status "Applied" --job_link "https://example.com/job"
 python apptrack_v2.py list
+python apptrack_v2.py stats
 python apptrack_v2.py update 1 --status "Interview"
 python apptrack_v2.py update 1 --notes "Invited to first interview"
 python apptrack_v2.py delete 1

@@ -52,6 +52,12 @@ addp.add_argument("--notes", default=None)
 
 listp = sub_parser.add_parser("list")
 
+# stats argument
+
+statsp = sub_parser.add_parser("stats")
+
+# update argument
+
 updatep = sub_parser.add_parser("update")
 updatep.add_argument("id", type=int)
 #optional fields
@@ -127,7 +133,28 @@ if __name__ == "__main__":
         else:
             for i in rows:
                 print(f'Application ID: {i[0]}, Company Name: {i[1]}, Role: {i[2]}, Application Status: {i[3]}, Date Applied: {i[4]}, Job Link: {i[5] if i[5] is not None else 'Job link not available'}\n')
-                
+
+    # stats branch
+    elif args.cmd == "stats":
+        conn, cur = get_conn()
+
+        cur.execute('''
+        SELECT COUNT(*) 
+        FROM applications''')
+        row = cur.fetchone()
+        total_applications = row[0]
+        print(f'Total applications: {total_applications}')
+
+        cur.execute('''
+        SELECT applications.status, COUNT(*)
+        FROM applications
+        GROUP BY applications.status
+        ORDER BY COUNT(*) DESC''')
+        rows = cur.fetchall()
+        for status, count in rows:
+            print(f"{status}: {count}")
+        conn.close()
+
     # update branch 
 
     elif args.cmd =="update":
