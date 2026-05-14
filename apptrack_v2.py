@@ -71,6 +71,15 @@ updatep.add_argument("--job_link", default=None)
 delp = sub_parser.add_parser("delete")
 delp.add_argument("id", type=int)
 
+def clean_job_link(x):
+    if x is None:
+        return None
+    x = x.strip()
+    if x == '' or x == 'None':
+        return None
+    else:
+        return x
+
 if __name__ == "__main__":
     init_db()
     args = parser.parse_args()
@@ -88,8 +97,11 @@ if __name__ == "__main__":
             date_applied = datetime.now().strftime("%Y-%m-%d")
         status = args.status
         job_link = args.job_link
-        if job_link == None:
+        if job_link is not None:
+            job_link = clean_job_link(job_link)
+        else:
             job_link = input("Job link: ")
+            job_link = clean_job_link(job_link)
         notes = args.notes
         conn, cur = get_conn()
         company = company.strip()
@@ -180,6 +192,7 @@ if __name__ == "__main__":
                 did_update = True
 
             if not args.job_link is None:
+                args.job_link = clean_job_link(args.job_link)
                 cur.execute('''
                 UPDATE applications SET job_link = ? WHERE id = ? ''', 
                 (args.job_link, args.id)) 
